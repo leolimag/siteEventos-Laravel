@@ -1,0 +1,5 @@
+				FLASH MESSAGES
+
+são feedbacks que são dados caso determinada ação do usuário seja realizada, como por exemplo, o envio bem-sucedido de um formulário. é possível adicionar por meio de "sessions", mas não é uma boa prática. devem ser adicionadas com o método "with" nos controllers. 
+
+no blade, podemos verificar a existência de uma flash message e exibi-la somente caso ela exista. é feito através da diretiva @session.

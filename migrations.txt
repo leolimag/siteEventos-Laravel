@@ -1,0 +1,35 @@
+				MIGRATIONS
+
+"migrations" funcionam como um versionamento de banco de dados. se, por acaso, criar, excluir ou alterar algum  campo importante, posso executar um "rollback" e retornar à versão anterior. além disso, facilita no setup do banco de dados com apenas um comando, sem precisar setá-lo manualmente.
+
+temos, portantos, algumas vantagens: 
+
+1- criar a modelagem do DB em poucos comandos;
+2- ter acesso ao DB na própria linguagem, sem precisar recorrer diretamente ao SGBD (às vezes, nem é possível);
+3- compartilhar com a equipe uma cópia exata da estrutura do DB;
+4- facilita a gestão das mudanças e nas manutenções;
+5- permite analisar alterações.
+
+geralmente, um migration é dividido em duas funções: up( ), que é necessário executar as alterações, e down( ), para reverter as alterações. para adicionar, por exemplo, um novo campo, simplesmente vou até a migration da tabela que eu criei, insiro um novo campo no up( ), e executo um "php artisan migrate:fresh", que irá atualizar as tabelas (excluir e inserir). porém, essa não é a melhor prática. o certo é criar UMA NOVA MIGRATION (rodando apenas ela) para inserção do novo campo e não dar o migration:fresh, evitando apagar os dados. em desenvolvimento, não há problemas. em produção, há.
+
+em geral, as migrations são utilizadas para metadados e tabelas/DB, não registros. o nome da migration é essencial para identificar o objetivo dela.
+
+comandos:
+
+- migrate
+roda as migrations que não foram inseridas;
+
+- fresh 
+apaga os dados antigos e atualiza com os novos campos e mudanças feitas;
+
+- rollback 
+retorna uma migration atrás;
+
+- reset 
+retorna e desfaz todas as migrations;
+
+- refresh
+roda todas as migrations novamente;
+
+- status
+verifica quais migrations já foram lançados etc;
